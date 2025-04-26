@@ -2,16 +2,15 @@
 
 ## Group Number 3 👥
 
-### Work Distribution 📑:
+## Work Distribution 📑:
 
 | Task                   | Funoon Albalawi | Khulud Alotaibi | Rahf Altwairqi |
 |------------------------|-----------------|-----------------|----------------|
-| Research and Documentation 📖 |                 |                 |                |
-| Coding 🖥️              |                 |                 |                |
-| Testing 🧪              |                 |                 |                |
-| Final Report 📄         |                 |                 |                |
+| Phase 1🖥️ |                 |                 |                |
+| Phase 2🖥️              |                 |                 |                |
+| Phase 3🖥️             |                 |                 |                |
 
-#### Names and IDs for each student 📚:
+## Names and IDs for each student 📚:
 
 - **Funoon Albalawi** - 202174350 🏷️
 - **Khulud Alotaibi** - 202168730 🏷️
