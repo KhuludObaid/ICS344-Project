@@ -1,1 +1,17 @@
+root
 admin
+user
+test
+ubuntu
+guest
+administrator
+dev
+operator
+student
+demo
+login
+msfadmin
+admin1
+tester
+developer
+vagrant
