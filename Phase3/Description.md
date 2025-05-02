@@ -105,5 +105,5 @@ The custom brute-force script failed to connect after the ban was applied:
 
 This phase demonstrates how a simple host-based IDS/IPS like `fail2ban` can mitigate brute-force SSH attacks in real-time. The result is a hardened system that automatically responds to suspicious behavior without manual intervention.
 
-> ✅ *Project goal accomplished: Detect ➜ Analyze ➜ Defend.*
+
 
