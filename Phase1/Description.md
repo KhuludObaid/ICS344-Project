@@ -7,7 +7,7 @@
 - **Network Configuration:** Bridged Adapter (to allow both machines to communicate on the same local network)
 
 ### 📍 Victim IP Address
-![Victim IP](Screenshots/Environment/victim-ip-address.png)
+![Victim IP](Screenshots/Environment/victim-ip-address.jpg)
 
 ### 🔍 Nmap Scan Results
 To verify open ports, we ran:
@@ -16,7 +16,7 @@ nmap -sV 192.168.8.116
 ```
 
 Result showed that **port 22 (SSH)** was open:
-![Nmap Scan](Screenshots/Environment/nmap-scan.png)
+![Nmap Scan](Screenshots/Environment/nmap-scan.jpg)
 
 ---
 
@@ -61,13 +61,13 @@ run
 
 #### 📸 Screenshots:
 - Metasploit startup:  
-  ![MSF Launch](Screenshots/Metasploit/metasploit-launch.png)
+  ![MSF Launch](Screenshots/Metasploit/metasploit-launch.jpg)
 
 - Module configuration:  
-  ![MSF Config](Screenshots/Metasploit/metasploit-config.png)
+  ![MSF Config](Screenshots/Metasploit/metasploit-config.jpg)
 
 - Successful login:  
-  ![MSF Attack](Screenshots/Metasploit/metasploit-attack.png)
+  ![MSF Attack](Screenshots/Metasploit/metasploit-attack.jpg)
 
 ---
 
@@ -85,16 +85,16 @@ client.connect(target_ip, username=username, password=password, timeout=3)
 
 #### 📸 Screenshots:
 - User list:  
-  ![User List](Screenshots/Script/script-userlist.png)
+  ![User List](Screenshots/Script/script-userlist.jpg)
 
 - Password list:  
-  ![Password List](Screenshots/Script/script-passwordlist.png)
+  ![Password List](Screenshots/Script/script-passwordlist.jpg)
 
 - Script source code:  
-  ![Script Code](Screenshots/Script/script-code.png)
+  ![Script Code](Screenshots/Script/script-code.jpg)
 
 - Script output (success with `vagrant:vagrant`):  
-  ![Script Output](Screenshots/Script/script-result.png)
+  ![Script Output](Screenshots/Script/script-result.jpg)
 
 ---
 
