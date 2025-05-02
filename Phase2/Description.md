@@ -90,7 +90,7 @@ index=* source="/var/log/auth.log" ("Failed password" OR "Accepted password")
 
 ### 🧩 Full Dashboard View
 <p align="center">
-  <img src="Log-visualizations/splunk-dashboard-overview.jpg" width="700"/><br>
+  <img src="Log-visualization/splunk-dashboard-overview.jpg" width="700"/><br>
   <em>Figure: SSH Brute Force Analysis dashboard</em>
 </p>
 
@@ -98,13 +98,13 @@ index=* source="/var/log/auth.log" ("Failed password" OR "Accepted password")
 
 #### 🔸 Login Outcome (Pie Chart)
 <p align="center">
-  <img src="Log-visualizations/login-outcome-breakdown.jpg" width="400"/><br>
+  <img src="Log-visualization/login-outcome-breakdown.jpg" width="400"/><br>
   <em>Figure: 99% of login attempts failed</em>
 </p>
 
 #### 🔸 Login Attempts by Hour
 <p align="center">
-  <img src="Log-visualizations/login-attempts-by-hour.jpg" width="600"/>
+  <img src="Log-visualization/login-attempts-by-hour.jpg" width="600"/>
 </p>
 
 #### 🔸 Most Attacked Usernames
@@ -114,12 +114,12 @@ index=* source="/var/log/auth.log" ("Failed password" OR "Accepted password")
 
 #### 🔸 Successful SSH Logins Over Time
 <p align="center">
-  <img src="Log-visualizations/successful-logins-over-time.jpg" width="600"/>
+  <img src="Log-visualization/successful-logins-over-time.jpg" width="600"/>
 </p>
 
 #### 🔸 Failed SSH Attempts Over Time
 <p align="center">
-  <img src="Log-visualizations/failed-logins-over-time.jpg" width="600"/>
+  <img src="Log-visualization/failed-logins-over-time.jpg" width="600"/>
 </p>
 
 ---
