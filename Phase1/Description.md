@@ -1,56 +1,53 @@
 # 🛠️ Phase 1: Attack Setup and Execution
 
+---
+
 ## 🔧 Environment Setup
 
 - **Victim Machine:** Metasploitable3 (Ubuntu 14.04)
-- **Attacker Machine:** Kali Linux (latest version)
-- **Network Configuration:** Bridged Adapter (to allow both machines to communicate on the same local network)
+- **Attacker Machine:** Kali Linux (latest)
+- **Network Configuration:** Bridged Adapter for LAN communication
 
 ### 📍 Victim IP Address
-![Victim IP](Screenshots/Environment/victim-ip-address.jpg)
+<p align="center">
+  <img src="Screenshots/Environment/victim-ip-address.jpg" width="500"/>
+</p>
 
 ### 🔍 Nmap Scan Results
-To verify open ports, we ran:
 ```bash
 nmap -sV 192.168.8.116
 ```
 
-Result showed that **port 22 (SSH)** was open:
-![Nmap Scan](Screenshots/Environment/nmap-scan.jpg)
+<p align="center">
+  <img src="Screenshots/Environment/nmap-scan.jpg" width="600"/>
+  <br><em>Figure: Port 22 (SSH) is open on the victim</em>
+</p>
 
 ---
 
 ## 🎯 Objective
 
-To successfully brute-force SSH login on the victim machine using:
-1. **Metasploit Framework** (with `ssh_login` auxiliary module)
-2. A **custom Python script** leveraging the `paramiko` SSH library
+To successfully brute-force SSH access on the victim machine using:
+1. Metasploit (`ssh_login` module)
+2. Custom Python script with `paramiko`
 
 ---
 
-## 📂 Tools & Files Used
+## 🧰 Tools Used
 
-| Tool/Script | Description |
-|-------------|-------------|
-| `Metasploit` | Used the `auxiliary/scanner/ssh/ssh_login` module |
-| `ssh_poc.py` | Custom script to try user/pass combos using Paramiko |
-| `user.txt`   | Common usernames |
-| `password.txt` | Common/weak passwords |
-
-> All scripts and wordlists are located in the `/Script/` and `/Wordlists/` folders.
+| Tool          | Description                              |
+|---------------|------------------------------------------|
+| Metasploit    | SSH login scanner module (`ssh_login`)   |
+| `ssh_poc.py`  | Python script using `paramiko`            |
+| `user.txt`    | Common usernames                         |
+| `password.txt`| Weak passwords                           |
 
 ---
 
 ## 💥 Attack Execution
 
-### 🔹 Metasploit Attack
+### 🔹 Metasploit Brute-force
 
-1. Started `msfconsole`
-2. Used the `ssh_login` scanner module
-3. Loaded user and password wordlists
-4. Ran the brute-force attack
-
-#### 🔧 Configuration:
 ```bash
 use auxiliary/scanner/ssh/ssh_login
 set RHOSTS 192.168.8.116
@@ -59,69 +56,72 @@ set PASS_FILE /home/kali/password.txt
 run
 ```
 
-#### 📸 Screenshots:
-- Metasploit startup:  
-  ![MSF Launch](Screenshots/Metasploit/metasploit-launch.jpg)
+<p align="center">
+  <img src="Screenshots/Metasploit/metasploit-launch.jpg" width="500"/>
+  <br><em>Launching Metasploit</em>
+</p>
 
-- Module search (`search ssh_login`):
-  ![Metasploit Search](Screenshots/Metasploit/metasploit-search.jpg)
+<p align="center">
+  <img src="Screenshots/Metasploit/metasploit-config.jpg" width="500"/>
+  <br><em>Configured module with wordlists</em>
+</p>
 
-- Successful login:  
-  ![MSF Attack](Screenshots/Metasploit/metasploit-attack.jpg)
+<p align="center">
+  <img src="Screenshots/Metasploit/metasploit-attack.jpg" width="500"/>
+  <br><em>Login successful: Found credentials</em>
+</p>
 
 ---
 
-### 🔹 Custom Script Attack (Python + Paramiko)
+### 🔹 Python Script Brute-force
 
-We developed `ssh_poc.py` that:
-- Reads usernames and passwords from `.txt` files
-- Tries all combinations against the target IP
-- Detects successful login
+<p align="center">
+  <img src="Screenshots/Script/script-userlist.jpg" width="400"/>
+  <br><em>Username list</em>
+</p>
 
-#### 💡 Important Code Segment:
-```python
-client.connect(target_ip, username=username, password=password, timeout=3)
-```
+<p align="center">
+  <img src="Screenshots/Script/script-passwordlist.jpg" width="400"/>
+  <br><em>Password list</em>
+</p>
 
-#### 📸 Screenshots:
-- User list:  
-  ![User List](Screenshots/Script/script-userlist.jpg)
+<p align="center">
+  <img src="Screenshots/Script/script-code.jpg" width="500"/>
+  <br><em>Key snippet of `ssh_poc.py`</em>
+</p>
 
-- Password list:  
-  ![Password List](Screenshots/Script/script-passwordlist.jpg)
-
-- Script source code:  
-  ![Script Code](Screenshots/Script/script-code.jpg)
-
-- Script output (success with `vagrant:vagrant`):  
-  ![Script Output](Screenshots/Script/script-result.jpg)
+<p align="center">
+  <img src="Screenshots/Script/script-result.jpg" width="500"/>
+  <br><em>Script output: Found valid login</em>
+</p>
 
 ---
 
 ## ✅ Outcome
 
-- **Successful login:**  
-  Both Metasploit and the custom script identified `vagrant:vagrant` as working credentials.
-- Full access to the target machine was achieved through SSH.
+- **Credentials found:** `vagrant : vagrant`
+- **Access achieved** using both Metasploit and script
+- Screenshots confirm end-to-end success
 
 ---
 
-## ⚠️ Challenges Faced
+## ⚠️ Challenges & Solutions
 
-| Issue | Solution |
-|-------|----------|
-| SSH connections failed initially | Verified IP and port accessibility via Nmap |
-| Metasploit timeouts | Reduced thread count and simplified wordlists |
-| Paramiko caused rapid failure | Added delay using `time.sleep(0.8)` to avoid server-side lockouts |
-| Network isolation between VMs | Switched from NAT to Bridged Adapter in VirtualBox settings |
+| Challenge | Solution |
+|----------|----------|
+| SSH timeout | Used `time.sleep(0.8)` between attempts |
+| Network issues | Switched to Bridged Adapter |
+| Metasploit stalls | Limited wordlist size |
 
 ---
 
 ## 🔒 Disclaimer
 
-> This attack was performed in a **controlled lab environment** for educational purposes only.  
-> Never attempt unauthorized access to systems in real environments.
+> This lab was conducted in a controlled environment and is strictly for educational purposes.  
+> Unauthorized access to any system is illegal and unethical.
 
 ---
+
+✅ *Phase 1 completed – moving to log collection in Phase 2.*
 
 
