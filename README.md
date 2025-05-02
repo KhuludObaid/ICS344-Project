@@ -19,7 +19,7 @@
 | **Phase 2 – SIEM Analysis**    | ✔️               | ✔️               | ✔️              |
 | **Phase 3 – Defense Strategy** | ✔️               | ✔️               | ✔️              |
 
-> ✅ *All members contributed equally to every phase of the project.*
+> *All members contributed equally to every phase of the project.*
 
 ---
 
@@ -91,4 +91,4 @@ Unauthorized use of these techniques is strictly prohibited.
 
 ---
 
-✅ *Completed for ICS344 – Computer and Network Security*
+ *Completed for ICS344 – Computer and Network Security*
