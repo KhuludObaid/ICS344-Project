@@ -1,53 +1,109 @@
-# 🛡️ Phase 3: Defense Strategy with Fail2Ban
-
-## 🔧 Setup Summary
-- **Defense Tool:** Fail2Ban
-- **Monitored Log File:** `/var/log/auth.log`
-- **Platform:** Metasploitable3 (Ubuntu 14.04)
-- **Configuration File:** `/etc/fail2ban/jail.local`
+# 🛡️ Phase 3: Defensive Strategy Proposal
 
 ## 🎯 Objective
-To automatically detect and block SSH brute-force attacks by banning the attacker’s IP address after multiple failed login attempts, using a log-based intrusion prevention tool.
 
-## ⚙️ Configuration
-We configured Fail2Ban with the following rules under `[sshd]`:
-- `enabled = true`
-- `port = ssh`
-- `filter = sshd`
-- `logpath = /var/log/auth.log`
-- `maxretry = 3` (ban after 3 failures)
-- `findtime = 600` (within 10 minutes)
-- `bantime = 1800` (ban lasts 30 minutes)
-
-After applying the settings, we restarted the Fail2Ban service and verified the SSH jail was active.
-
-## 🧪 Testing the Defense
-We reran the brute-force attack script from Kali. After 3 failed login attempts, Fail2Ban:
-- **Detected the pattern**
-- **Banned the attacker IP**
-- **Blocked all future SSH attempts from that IP**
-
-The IP ban was confirmed using:
-```bash
-sudo fail2ban-client status sshd
-
-## 📉 Result Validation
-- **Before defense**: Splunk showed a large number of failed SSH login attempts.
-- **After defense**: The failed attempts dropped significantly as the attacker's IP was blocked.
-
-## 🖼️ Screenshots Included
-- `fail2ban-installed.png` – Confirmation of successful Fail2Ban installation
-- `jail-local-config.png` – Configuration file showing maxretry and bantime values
-- `before-ban-status.png` – Fail2Ban status before any IP was banned
-- `after-ban-status.png` – Attacker IP listed as banned
-- `kali-blocked-connection.png` – SSH access blocked after IP ban
-- `splunk-before-defense.png` – Spike in failed login events before Fail2Ban
-- `splunk-after-defense.png` – Drop in failed login events after defense was applied
-
-## ⚠️ Challenges Faced
-- Fail2Ban was not available via `apt` due to deprecated Ubuntu 14.04 repositories
-- Solved by manually downloading and installing the `.deb` package from a legacy source
+After identifying brute-force SSH attacks in Phase 2, this phase focuses on implementing and validating a **defensive mechanism**. We chose to deploy `fail2ban` to automatically detect repeated failed login attempts and ban malicious IPs.
 
 ---
 
-> **Note:** This defense phase demonstrates the effectiveness of combining log-based detection with automated IP banning to mitigate brute-force attacks.
+## 🛠️ Defense Mechanism: `fail2ban`
+
+### 🔹 Installation
+
+We installed `fail2ban` manually on the Metasploitable3 VM using a `.deb` package:
+
+```bash
+sudo dpkg -i fail2ban_0.11.1-1_all.deb
+```
+
+<p align="center">
+  <img src="Defense-proof-screenshots/fail2ban-installation.jpg" width="600"/><br>
+  <em>Figure: Installing fail2ban on the victim machine</em>
+</p>
+
+---
+
+### 🔹 Configuration
+
+We modified `/etc/fail2ban/jail.local` to monitor SSH login attempts via `/var/log/auth.log`. Configuration settings included:
+
+- `maxretry=4`
+- `findtime=600` seconds
+- `bantime=1800` seconds
+
+<p align="center">
+  <img src="Defense-proof-screenshots/fail2ban-config-file.jpg" width="600"/><br>
+  <em>Figure: fail2ban jail configuration targeting SSH login attempts</em>
+</p>
+
+---
+
+### 🔍 Initial Status
+
+Before triggering an attack, we verified that no IPs were currently banned:
+
+<p align="center">
+  <img src="Defense-proof-screenshots/fail2ban-status-before.jpg" width="600"/><br>
+  <em>Figure: Initial status of fail2ban — no IPs banned</em>
+</p>
+
+---
+
+## 💥 Triggering and Observing the Defense
+
+After running the brute-force script again, `fail2ban` detected the failed attempts and banned the attacker's IP:
+
+<p align="center">
+  <img src="Defense-proof-screenshots/fail2ban-status-after.jpg" width="600"/><br>
+  <em>Figure: Attacker IP 192.168.8.118 successfully banned</em>
+</p>
+
+---
+
+## 🔎 Log Monitoring Results
+
+### 📉 Splunk Search After Defense
+
+After the ban was enforced, we checked `/var/log/auth.log` and visualized in Splunk. The number of login attempts significantly dropped:
+
+<p align="center">
+  <img src="Before-after-comparison/splunk-after-ban-search.jpg" width="700"/><br>
+  <em>Figure: Splunk search result shows limited activity after ban</em>
+</p>
+
+---
+
+### 📊 Splunk Dashboard Comparison
+
+<p align="center">
+  <img src="Before-after-comparison/splunk-dashboard-after-ban.jpg" width="700"/><br>
+  <em>Figure: Post-defense dashboard showing reduced SSH attempts</em>
+</p>
+
+---
+
+### 🧪 Script Fails to Connect
+
+The custom brute-force script failed to connect after the ban was applied:
+
+<p align="center">
+  <img src="Before-after-comparison/script-fail-to-connect.jpg" width="700"/><br>
+  <em>Figure: Connection refused after fail2ban blocks the attacker's IP</em>
+</p>
+
+---
+
+## ✅ Outcome
+
+- `fail2ban` effectively blocked brute-force login attempts.
+- The attacker's IP was logged, banned, and prevented from accessing SSH.
+- Splunk confirmed the drop in activity after defense activation.
+
+---
+
+## 📌 Conclusion
+
+This phase demonstrates how a simple host-based IDS/IPS like `fail2ban` can mitigate brute-force SSH attacks in real-time. The result is a hardened system that automatically responds to suspicious behavior without manual intervention.
+
+> ✅ *Project goal accomplished: Detect ➜ Analyze ➜ Defend.*
+
