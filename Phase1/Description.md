@@ -63,8 +63,8 @@ run
 - Metasploit startup:  
   ![MSF Launch](Screenshots/Metasploit/metasploit-launch.jpg)
 
-- Module configuration:  
-  ![MSF Config](Screenshots/Metasploit/metasploit-config.jpg)
+- Module search (`search ssh_login`):
+  ![Metasploit Search](Screenshots/Metasploit/metasploit-search.jpg)
 
 - Successful login:  
   ![MSF Attack](Screenshots/Metasploit/metasploit-attack.jpg)
