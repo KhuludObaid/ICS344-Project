@@ -18,7 +18,7 @@ sudo /opt/splunkforwarder/bin/splunk list forward-server
 
 This confirmed active forwarding:
 <p align="center">
-  <img src="splunk_setup/splunk-forwarder-status.jpg" width="500"/><br>
+  <img src="Splunk_setup/splunk-forwarder-status.jpg" width="500"/><br>
   <em>Figure: Splunk forwarder successfully pointing to Splunk server</em>
 </p>
 
@@ -34,7 +34,7 @@ We monitored:
 ### ⚠️ Splunk Search Error
 An error was triggered due to disk space limits:
 <p align="center">
-  <img src="splunk_setup/splunk-search-error.jpg" width="700"/><br>
+  <img src="Splunk_setup/splunk-search-error.jpg" width="700"/><br>
   <em>Figure: Splunk unable to execute search due to disk usage exceeding limit</em>
 </p>
 
@@ -66,7 +66,7 @@ To resolve this:
 
 We used **Dashboard Studio** and selected the **Grid** layout for organizing our visualizations:
 <p align="center">
-  <img src="splunk_setup/splunk-dashboard-creation.jpg" width="500"/><br>
+  <img src="Splunk_setup/splunk-dashboard-creation.jpg" width="500"/><br>
   <em>Figure: Creating the "SSH Brute Force Analysis" dashboard</em>
 </p>
 
@@ -80,7 +80,7 @@ index=* source="/var/log/auth.log" ("Failed password" OR "Accepted password")
 ```
 
 <p align="center">
-  <img src="log_visualizations/splunk-auth-log-results.jpg" width="750"/><br>
+  <img src="Log_visualizations/splunk-auth-log-results.jpg" width="750"/><br>
   <em>Figure: Raw events filtered from the forwarded log</em>
 </p>
 
@@ -90,7 +90,7 @@ index=* source="/var/log/auth.log" ("Failed password" OR "Accepted password")
 
 ### 🧩 Full Dashboard View
 <p align="center">
-  <img src="log_visualizations/splunk-dashboard-overview.jpg" width="700"/><br>
+  <img src="Log_visualizations/splunk-dashboard-overview.jpg" width="700"/><br>
   <em>Figure: SSH Brute Force Analysis dashboard</em>
 </p>
 
@@ -98,28 +98,28 @@ index=* source="/var/log/auth.log" ("Failed password" OR "Accepted password")
 
 #### 🔸 Login Outcome (Pie Chart)
 <p align="center">
-  <img src="log_visualizations/login-outcome-breakdown.jpg" width="400"/><br>
+  <img src="Log_visualizations/login-outcome-breakdown.jpg" width="400"/><br>
   <em>Figure: 99% of login attempts failed</em>
 </p>
 
 #### 🔸 Login Attempts by Hour
 <p align="center">
-  <img src="log_visualizations/login-attempts-by-hour.jpg" width="600"/>
+  <img src="Log_visualizations/login-attempts-by-hour.jpg" width="600"/>
 </p>
 
 #### 🔸 Most Attacked Usernames
 <p align="center">
-  <img src="log_visualizations/most-attacked-usernames.jpg" width="600"/>
+  <img src="Log_visualizations/most-attacked-usernames.jpg" width="600"/>
 </p>
 
 #### 🔸 Successful SSH Logins Over Time
 <p align="center">
-  <img src="log_visualizations/successful-logins-over-time.jpg" width="600"/>
+  <img src="Log_visualizations/successful-logins-over-time.jpg" width="600"/>
 </p>
 
 #### 🔸 Failed SSH Attempts Over Time
 <p align="center">
-  <img src="log_visualizations/failed-logins-over-time.jpg" width="600"/>
+  <img src="Log_visualizations/failed-logins-over-time.jpg" width="600"/>
 </p>
 
 ---
