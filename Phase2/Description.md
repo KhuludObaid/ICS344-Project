@@ -90,7 +90,7 @@ index=* source="/var/log/auth.log" ("Failed password" OR "Accepted password")
 
 ### 🧩 Full Dashboard View
 <p align="center">
-  <img src="Log-visualization/splunk-dashboard-overview.jpg" width="700"/><br>
+  <img src="Log-visualization/splunk-auth-log-results.jpg" width="700"/><br>
   <em>Figure: SSH Brute Force Analysis dashboard</em>
 </p>
 
