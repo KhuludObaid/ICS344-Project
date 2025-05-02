@@ -109,7 +109,8 @@ index=* source="/var/log/auth.log" ("Failed password" OR "Accepted password")
 
 #### 🔸 Most Attacked Usernames
 <p align="center">
-  <img src="Log-visualizations/most-attacked-usernames.jpg" width="600"/>
+  <img src="Log-visualization/most-attacked-usernames.jpg" width="600"/>
+ 
 </p>
 
 #### 🔸 Successful SSH Logins Over Time
