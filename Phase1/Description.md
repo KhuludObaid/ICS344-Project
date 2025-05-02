@@ -63,7 +63,7 @@ run
 
 <p align="center">
   <img src="Screenshots/Metasploit/metasploit-search.jpg" width="500"/>
-  <br><em>Configured module with wordlists</em>
+  <br><em>Module search</em>
 </p>
 
 <p align="center">
