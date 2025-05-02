@@ -124,4 +124,4 @@ client.connect(target_ip, username=username, password=password, timeout=3)
 
 ---
 
-✅ *Phase 1 complete. Proceeding to SIEM log collection in Phase 2.*
+
