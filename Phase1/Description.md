@@ -113,14 +113,7 @@ run
 | Network issues | Switched to Bridged Adapter |
 | Metasploit stalls | Limited wordlist size |
 
----
 
-## 🔒 Disclaimer
-
-> This lab was conducted in a controlled environment and is strictly for educational purposes.  
-> Unauthorized access to any system is illegal and unethical.
-
----
 
  *Phase 1 completed – moving to log collection in Phase 2.*
 
