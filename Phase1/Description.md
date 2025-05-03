@@ -97,7 +97,7 @@ run
 
 ---
 
-## ✅ Outcome
+## Outcome
 
 - **Credentials found:** `vagrant : vagrant`
 - **Access achieved** using both Metasploit and script
@@ -122,6 +122,6 @@ run
 
 ---
 
-✅ *Phase 1 completed – moving to log collection in Phase 2.*
+ *Phase 1 completed – moving to log collection in Phase 2.*
 
 
